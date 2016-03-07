@@ -9,7 +9,12 @@ public abstract class BinaryOperation extends Operation {
 
 	@Override
 	public void eval() {
-		// TODO Auto-generated method stub
+		if(this.getContext().size() >= 2){
+			double res =  calc(this.getContext().pop(), this.getContext().pop());
+			this.getContext().push(res);
+		} else {
+			throw new IllegalStateException();
+		}
 
 	}
 

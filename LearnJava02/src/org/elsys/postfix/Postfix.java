@@ -52,6 +52,10 @@ public class Postfix {
 	public static void main(String[] args) {
 		Postfix postfix = new Postfix();
 		postfix.addOperation(new Plus());
+		postfix.addOperation(new Minus());
+		postfix.addOperation(new Multiply());
+		postfix.addOperation(new Divide());
+		
 		Scanner scanner = new Scanner(System.in);
 		postfix.interpret(scanner);
 	}
