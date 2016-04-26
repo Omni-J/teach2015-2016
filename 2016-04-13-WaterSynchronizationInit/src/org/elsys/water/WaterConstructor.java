@@ -21,10 +21,36 @@ public class WaterConstructor {
 
 	public void proceedOxygen(Oxygen oxygen) throws Exception {
 		// TODO: implement me
+		/*
+		 * Procedure: 
+		 * initing the barrier as conditions
+		 * locking with semaphores
+		 * building
+		 * releasing
+		 * 
+		 * 
+		 * */
+		lock.lock();
+		oxygenCounter++;
+		if(hydrogenCounter>=2){
+			hydrogenSemaphore.release();
+			hydrogenCounter -= 2;
+			oxygenSemaphore.release();
+			oxygenCounter -= 1;
+		} else{
+			lock.unlock();
+		}
+		oxygenSemaphore.wait();
+		barrier.await();
+		lock.unlock();
+			
 	}
 
 	public void proceedHydrogen(Hydrogen hydrogen) throws Exception {
 		// TODO: implement me
+		/*
+		 * Same as the one above but with different if's
+		 * */
 	}
 
 	public static void main(String[] args) {
